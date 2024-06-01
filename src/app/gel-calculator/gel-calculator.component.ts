@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Matrix } from '../_types/matrix';
 import { FormsModule } from '@angular/forms';
 import { GaussianCalculator } from '../_core/gaussian-calc';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-gel-calculator',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgbAccordionModule],
   templateUrl: './gel-calculator.component.html',
   styleUrl: './gel-calculator.component.scss'
 })

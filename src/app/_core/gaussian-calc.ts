@@ -6,7 +6,7 @@ export class GaussianCalculator {
         return matrix.value.length + 1 == matrix.value[0].length
     }
 
-    calculateRows(row1: number[], row2: number[], id: number): number[] {
+    recalculateRows(row1: number[], row2: number[], id: number): number[] {
         let result: number[] = []
 
         for (let i = 0; i < row1.length; i++) {
@@ -23,26 +23,19 @@ export class GaussianCalculator {
             new Array<number>(matrix.value.length)
 
         for (let i = 1; i < matrix.value.length + 1; i++) {
-            console.log('Iteration ' + i)
 
             let row = matrix.value[matrix.value.length - i]
-            console.log(row)
             let rowRes = row[row.length - 1]
-            console.log(rowRes)
             let secondValue = row[row.length - i - 1]
-            console.log(secondValue)
             let addValue = 0
 
             for (let j = resultsMatrix.length - 1; j >= 0; j--) {
-                console.log('Inner iteration: ' + j)
                 if (resultsMatrix[j]) {
                     addValue += resultsMatrix[j] * row[j]
-                    console.log(addValue)
                 }
             }
 
             resultsMatrix[resultsMatrix.length - i] = (rowRes - addValue) / secondValue
-            console.log(resultsMatrix[resultsMatrix.length - i])
         }
 
         return resultsMatrix
@@ -54,7 +47,7 @@ export class GaussianCalculator {
         while (iteration + 1 < matrix.value.length) {
             for (let i = iteration + 1; i < matrix.value.length; i++) {
                 matrix.value[i] =
-                    this.calculateRows(
+                    this.recalculateRows(
                         matrix.value[iteration],
                         matrix.value[i],
                         iteration)
