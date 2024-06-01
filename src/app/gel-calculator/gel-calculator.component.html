@@ -1,10 +1,10 @@
 <div class="container">
   <div class="h4 mt-2">Калькулятор</div>
-  <div class="row g-2">
+  <div class="row g-5">
     <div class="col-12 col-lg-6">
       <div class="h5 text-muted">Конфигурация матрицы</div>
       <div class="d-flex flex-row mb-2 flex-wrap">
-        <div class="flex-grow-2">
+        <div class="flex-grow-2 flex-fill">
           <label class="text-muted" for="inputGroup-rows"
             >Количество неизвестных</label
           >
@@ -25,11 +25,11 @@
         </button>
       </div>
 
-      <div class="h5 text-muted">Значения</div>
-      <div class="card p-0 border-top-0 border-bottom-0">
+      <div class="h5">Значения</div>
+      <div class="card p-0 border-2 border-top-0 border-bottom-0 mb-2">
         <div class="d-flex table-responsive">
           <div class="d-flex flex-column">
-            @for (row of matrix.matrix; track trackByFn(rowIndex, row); let
+            @for (row of matrix.value; track trackByFn(rowIndex, row); let
             rowIndex = $index; ) {
             <div class="d-flex flex-row">
               @for (col of row; track trackByFn(colIndex, col); let colIndex =
@@ -47,7 +47,7 @@
                   aria-label="Columns input"
                   id="inputGroup-cols"
                   aria-describedby="inputGroup-cols-sm"
-                  [(ngModel)]="matrix.matrix[rowIndex][colIndex]"
+                  [(ngModel)]="matrix.value[rowIndex][colIndex]"
                   style="min-width: 4rem"
                 />
               </div>
@@ -57,10 +57,46 @@
           </div>
         </div>
       </div>
+      <div class="d-flex">
+        <button
+          class="btn btn-outline-primary align-self-end flex-grow-1"
+          (click)="calculateRoots()"
+        >
+          Вычислить корни
+        </button>
+      </div>
     </div>
     <div class="col-12 col-lg-6">
-      <div class="h5 text-muted">Результат</div>
-      <div>{{ matrix | json }}</div>
+      <div class="h5">Результат</div>
+      @if (result.length == 0 ) {
+      <div>
+        Нажмите кнопку
+        <button
+          disabled
+          class="btn btn-outline-primary align-self-end flex-grow-1 btn-sm"
+        >
+          Вычислить корни
+        </button>
+        для вычисления
+      </div>
+      } @else if (result.includes(nan)) {
+      <div class="alert alert-danger">
+        <h4 class="alert-heading">Система не имеет решений</h4>
+        Попробуйте изменить условие
+      </div>
+      } @else {
+      <div>Результаты вычислений:</div>
+      @for (item of result; track $index) {
+      <div class="input-group flex-nowrap mb-1">
+        <div class="input-group-text font-monospace">
+          <span class="text-muted">x</span>
+          <span class="small">{{ $index + 1 }}</span>
+        </div>
+        <div class="form-control">
+          {{ item }}
+        </div>
+      </div>
+      }}
     </div>
   </div>
 </div>

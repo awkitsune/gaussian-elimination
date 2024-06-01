@@ -5,11 +5,11 @@ export class Matrix {
         this._matrix = Array.from({ length: rows }, () => Array(cols).fill(fillValue));
     }
 
-    get matrix(): number[][] {
+    get value(): number[][] {
         return this._matrix;
     }
 
-    set matrix(value: number[][]) {
+    set value(value: number[][]) {
         this._matrix = value;
     }
 
