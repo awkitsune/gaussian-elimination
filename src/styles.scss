@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+.blur-backdrop {
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.navbar {
+    background: rgba(245, 245, 247, .8);
+}
+
+.glass-background-lite {
+    background: rgba(245, 245, 247, .9);
+}
+
+.glass-background {
+    backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(245, 245, 247, .8);
+}

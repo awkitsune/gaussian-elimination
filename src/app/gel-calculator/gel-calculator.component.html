@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="h4 mt-2">Калькулятор</div>
+  <div class="row g-2">
+    <div class="col-12 col-lg-6">
+      <app-matrix-table [(matrix)]="matrix" [order]="order"></app-matrix-table>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="h5 text-muted">Результат</div>
+      <div>{{ matrix | json }}</div>
+    </div>
+  </div>
+</div>
