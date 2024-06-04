@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Matrix } from '../_types/matrix';
 import { FormsModule } from '@angular/forms';
 import { GaussianCalculator } from '../_core/gaussian-calc';
-import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { GelMethodInfoComponent } from '../gel-method-info/gel-method-info.component';
 
 @Component({
