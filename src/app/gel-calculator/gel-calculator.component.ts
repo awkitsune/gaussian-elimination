@@ -13,12 +13,16 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './gel-calculator.component.scss'
 })
 export class GelCalculatorComponent {
-  order = 3;
-  matrix = new Matrix(this.order, this.order + 1);
+  order = 3
+  matrix = new Matrix(this.order, this.order + 1)
   result: number[] = []
   readonly nan = Number.NaN
 
   calculator = new GaussianCalculator()
+
+  regenMatrix() {
+    this.matrix = new Matrix(this.order, this.order + 1)
+  }
 
   resizeMatrix(rows: number, cols: number): void {
     this.matrix.resize(rows, cols);
